@@ -1,36 +1,52 @@
 {
   "name": "@norviah/sheets",
   "version": "1.0.0",
-  "author": "norviah",
-  "license": "MIT",
-  "description": "Convert google sheets into JSON.",
-  "main": "src/index.js",
-  "types": "src/index.d.ts",
+  "description": "Convert Google Sheets into JSON.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
-    "src/**/*"
+    "lib/**/*"
   ],
+  "scripts": {
+    "build": "clear;./node_modules/typescript/bin/tsc",
+    "run": "npm run build && node ./lib/index.js",
+    "docs": "/bin/rm -rf docs;./node_modules/typedoc/bin/typedoc --plugin typedoc-plugin-markdown;sed -i '' '4d;5d' ./docs/README.md"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/norviah/sheets.git"
   },
   "keywords": [
-    "google sheets"
+    "sheets"
   ],
+  "author": "norviah",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/norviah/sheets/issues"
+    "url": "https://github.com/Norviah/sheets/issues"
   },
-  "homepage": "https://github.com/norviah/sheets#readme",
+  "homepage": "https://github.com/Norviah/sheets#readme",
+  "devDependencies": {
+    "@types/app-root-path": "^1.2.4",
+    "@types/lodash": "^4.14.152",
+    "@types/node": "^14.0.5",
+    "@types/readline-sync": "^1.4.3",
+    "@types/ws": "^7.2.4",
+    "@typescript-eslint/eslint-plugin": "^3.0.0",
+    "@typescript-eslint/parser": "^3.0.0",
+    "eslint": "^7.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "prettier": "^2.0.5",
+    "typedoc": "^0.17.7",
+    "typedoc-plugin-markdown": "^2.2.17",
+    "typescript": "^3.9.3"
+  },
   "dependencies": {
     "app-root-path": "^3.0.0",
-    "googleapis": "^39.2.0",
+    "google-auth-library": "^6.0.0",
+    "googleapis": "^51.0.0",
     "lodash": "^4.17.15",
     "ora": "^4.0.4",
     "readline-sync": "^1.4.10"
-  },
-  "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.3",
-    "prettier": "^2.0.5"
   }
 }
