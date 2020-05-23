@@ -1,4 +1,6 @@
-## @norviah/sheets
+[@norviah/sheets](README.md) › [Globals](globals.md)
+
+# @norviah/sheets
 
 Convert Google Sheets into JSON files. In order to use this module, you **must** enable the Google Sheets API for your google account which can be done at step 1 [here](https://developers.google.com/sheets/api/quickstart/nodejs#step_1_turn_on_the).
 
