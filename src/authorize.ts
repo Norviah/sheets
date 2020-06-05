@@ -1,40 +1,47 @@
 import { writeFileSync } from 'fs';
 import { OAuth2Client } from 'google-auth-library';
 import { join } from 'path';
-import readline from 'readline-sync';
+import { question } from 'readline-sync';
 
-import config from './config';
-import { Credentials, Tokens } from './types';
-import { importJSON } from './util';
+import { Credentials } from './types/credentials';
+import { directories } from './util/directories';
+import { Tokens } from './types/tokens';
+import { json } from './util/json';
 
 /**
- * Generates new tokens for the client and saves
- * the generated token to the given directory.
- * @param  client The Google Sheets client.
- * @param  dir    Where the generated tokens will be stored.
- * @return        The given client authorized.
+ * Represents the scopes that this project will use, we just need to read
+ * information from spreadsheets, so we'll use the 'readonly' scope.
+ */
+const scopes: string[] = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
+
+/**
+ * Generates tokens for the client and saves the tokens to the given directory,
+ * the client is authorized with the generated tokens and is returned.
+ * @param  client The unauthorized client with Google's API.
+ * @param  dir    Represents where the generated tokens will be saved to.
+ * @return        The client authorized with Google's API.
  */
 async function generateTokens(client: OAuth2Client, dir: string): Promise<OAuth2Client> {
-  // After a user has executed this project for the first time,
-  // they don't have a tokens file stored, so we must
-  // generate one for them. This line generates a new URL for the user for authorization purposes.
-  const URL: string = client.generateAuthUrl({ access_type: 'offline', scope: config.scopes });
+  // After this project is executed for the first time, the user will probably
+  // not have tokens saved on disk. If so, we'll generate one for them, this URL
+  // represents the link that the user can use to authorize this project.
+  const URL: string = client.generateAuthUrl({ access_type: 'offline', scope: scopes });
 
-  console.log(`Authorize this app by visiting this url: ${URL}`);
+  console.log(`Authorize this app by visiting this URL:\n${URL}`);
 
-  // Once they visit that URL, they grant access for this app and
-  // then generates a new token, and so we grab that token here.
-  const code: string = readline.question('\nEnter the code from that page here: ');
+  // Once the user has visited that URL and granted access, Google will generate
+  // a code for this project to use. We'll prompt the user to enter that here.
+  const code: string = question('\nEnter the code from that page here: ');
 
-  // This will provide an object with the access_token and refresh_token.
+  // We'll get the access and refresh tokens from that code.
   const { tokens } = await client.getToken(code);
 
-  // Store the token to disk to use for later program executions.
-  writeFileSync(join(dir, 'tokens.json'), JSON.stringify(tokens));
+  // Save the tokens to the directory for later program executions.
+  writeFileSync(join(dir, 'tokens.json'), JSON.stringify(tokens, null, 2));
 
-  console.log(`\nTokens stored to: ${join(dir, 'tokens.json')}`);
+  console.log(`\nTokens stored at: ${join(dir, 'tokens.json')}`);
 
-  // Set the client's credentials to the generated tokens.
+  // Authorize the client with the generated tokens.
   client.setCredentials(tokens);
 
   return client;
@@ -42,30 +49,30 @@ async function generateTokens(client: OAuth2Client, dir: string): Promise<OAuth2
 
 /**
  * Initializes a new client with Google's API and returns that reference.
- * @param  dir The base directory that holds the credentials and tokens file.
- * @return An authorized client with Google's API.
+ * @param  dir The root directory that holds the credentials and tokens file.
+ * @return     An authorized client with Google's API.
  */
-async function authorize(dir: string): Promise<OAuth2Client> {
-  // Try to import the credentials on disk.
-  const credentials: Credentials | null = importJSON(join(dir, 'credentials.json'));
+async function authorize(dir: string = directories.config): Promise<OAuth2Client> {
+  // Try to import the credentials from the directory..
+  const credentials: Credentials | null = json(join(dir, 'credentials.json'));
 
   if (!credentials) {
     throw new Error(`Missing credentials at: ${join(dir, 'credentials.json')}`);
   }
 
-  // Initialize a new client with Google's API with the given credentials.
+  // Initialize a new Google API client with the credentials.
   const { client_secret, client_id, redirect_uris } = credentials.installed;
   const client = new OAuth2Client(client_id, client_secret, redirect_uris[0]);
 
-  // Try to import tokens.
-  const tokens: Tokens | null = importJSON(join(dir, 'tokens.json'));
+  // Import tokens from the directory.
+  const tokens: Tokens | null = json(join(dir, 'tokens.json'));
 
-  // If no token file exists, we create a new token file.
+  // If the user doesn't have any tokens, we generate one for them.
   if (!tokens) {
     return await generateTokens(client, dir);
   }
 
-  // Set the credentials for the client.
+  // Authorize the client with the tokens.
   client.setCredentials(tokens);
 
   return client;
