@@ -14,7 +14,7 @@
 
 Ƭ **Credentials**: *object*
 
-Defined in types/credentials.ts:1
+*Defined in [types/credentials.ts:1](https://github.com/Norviah/sheets/blob/20a3574/src/types/credentials.ts#L1)*
 
 #### Type declaration:
 

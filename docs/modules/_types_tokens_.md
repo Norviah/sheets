@@ -14,7 +14,7 @@
 
 Ƭ **Tokens**: *object*
 
-Defined in types/tokens.ts:1
+*Defined in [types/tokens.ts:1](https://github.com/Norviah/sheets/blob/20a3574/src/types/tokens.ts#L1)*
 
 #### Type declaration:
 
