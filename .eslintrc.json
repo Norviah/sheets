@@ -10,6 +10,7 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
-    "@typescript-eslint/no-inferrable-types": "off"
+    "@typescript-eslint/no-inferrable-types": "off",
+    "max-len": [ "error", { "comments": 80, "code": 200 }]
   }
 }

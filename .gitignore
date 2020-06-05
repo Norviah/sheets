@@ -1,4 +1,7 @@
+# directories
 lib
 config
-.DS_Store
 node_modules
+
+# files
+.DS_Store

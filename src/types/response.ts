@@ -1,14 +1,11 @@
-/**
- * Represents the response when all sheets have been converted.
- */
 type Response = {
   /**
-   * Represents the names of the sheets that were converted.
+   * Represents a list of tabs that were converted.
    */
   converted: string[];
 
   /**
-   * Represents the names of all sheets that were available.
+   * Represents the names of all available tabs.
    */
   names: string[];
 
