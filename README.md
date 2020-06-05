@@ -16,6 +16,8 @@ Your `credentials.json` file should be saved under the sub-directory `config` in
 
 To convert a Google Spreadsheet into JSON, you'll need the spreadsheet's ID. For example, let's say we want to convert the [Animal Crossing: New Horizons Spreadsheet](https://tinyurl.com/acnh-sheet) into JSON, the ID is the long random string in the URL, so for this example, it'll be `13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4`.
 
+If an error occurs while trying to convert a tab, `sheets` will attempt to convert that tab up to 3 times. If an error still occurs for the third attempt, the program is terminated.
+
 The basic usage of `sheets` is
 
 ```javascript

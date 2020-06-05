@@ -14,7 +14,7 @@
 
 Ƭ **Response**: *object*
 
-Defined in types/response.ts:1
+*Defined in [types/response.ts:1](https://github.com/Norviah/sheets/blob/20a3574/src/types/response.ts#L1)*
 
 #### Type declaration:
 

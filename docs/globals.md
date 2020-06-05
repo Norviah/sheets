@@ -13,6 +13,7 @@
 * ["types/options"](modules/_types_options_.md)
 * ["types/response"](modules/_types_response_.md)
 * ["types/tokens"](modules/_types_tokens_.md)
+* ["util/config"](modules/_util_config_.md)
 * ["util/directories"](modules/_util_directories_.md)
 * ["util/json"](modules/_util_json_.md)
 * ["util/sanitize"](modules/_util_sanitize_.md)
