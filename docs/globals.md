@@ -7,10 +7,13 @@
 ### Modules
 
 * ["authorize"](modules/_authorize_.md)
-* ["config"](modules/_config_.md)
 * ["convert"](modules/_convert_.md)
 * ["index"](modules/_index_.md)
-* ["options"](modules/_options_.md)
-* ["response"](modules/_response_.md)
-* ["types"](modules/_types_.md)
-* ["util"](modules/_util_.md)
+* ["types/credentials"](modules/_types_credentials_.md)
+* ["types/options"](modules/_types_options_.md)
+* ["types/response"](modules/_types_response_.md)
+* ["types/tokens"](modules/_types_tokens_.md)
+* ["util/directories"](modules/_util_directories_.md)
+* ["util/json"](modules/_util_json_.md)
+* ["util/sanitize"](modules/_util_sanitize_.md)
+* ["util/wait"](modules/_util_wait_.md)

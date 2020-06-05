@@ -2,44 +2,44 @@
 
 # @norviah/sheets
 
-Convert Google Sheets into JSON files. In order to use this module, you **must** enable the Google Sheets API for your google account which can be done at step 1 [here](https://developers.google.com/sheets/api/quickstart/nodejs#step_1_turn_on_the).
+Convert Google Spreadsheets into JSON. In order to use this package, you **must** enable the Google Sheets API for your google account, which can be done [here](https://developers.google.com/sheets/api/quickstart/nodejs#step_1_turn_on_the).
 
-Click the `Enable the Google Sheets API` button and create an application for a `Desktop App`. Once created, download the `credentials.json` file by clicking the button, once downloaded, copy this file into the sub-directory `config` under your project's root.
+Click the `Enable the Google Sheets API` button and create an application for `Desktop App`. Once you have created an application, you'll be presented with a window containing your `Client ID` token, `Client Secret` token, and a button named `DOWNLOAD CLIENT CONFIGURATION`. Click this button and download the configuration, as this is your `credentials.json` file, save this in the sub-directory `config` under your project's root directory.
 
 ### Installation
 
-`npm install @norviah/sheets`
+```
+npm install @norviah/sheets
+```
 
 ### Usage
 
-Your `credentials.json` file should be saved under the sub-directory `config` under your project's root, if need be, you can store it in another directory and point that directory to `Sheets` at runtime.
+Your `credentials.json` file should be saved under the sub-directory `config` in your project's root directory, if wanted, you can store this file in another directory and point that directory to `sheets` during runtime.
 
-To convert a Google Sheet into JSON, you must have the Sheet's ID, which is the long random string in the URL, for example, if you want to convert the sheet for [Animal Crossing: New Horizons Spreadsheet](https://tinyurl.com/acnh-sheet), the url being:
-`https://docs.google.com/spreadsheets/d/13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4/edit#gid=1367413844`,
-the ID would be `13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4`.
+To convert a Google Spreadsheet into JSON, you'll need the spreadsheet's ID. For example, let's say we want to convert the [Animal Crossing: New Horizons Spreadsheet](https://tinyurl.com/acnh-sheet) into JSON, the ID is the long random string in the URL, so for this example, it'll be `13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4`.
 
-The basic usage for `Sheets` is
+The basic usage of `sheets` is
 
-```typescript
+```javascript
 
-const { Sheets } = require("@norviah/sheets");
+// Node.js
+const { sheets } = require('@norviah/sheets');
 
-// So, to continue off of the example above, if you want to
-// convert the Animal Crossing: New Horizons Spreadsheet to JSON,
-// you can do like:
+// Typescript
+import { sheets } from '@norviah/sheets';
 
-Sheets('13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4');
+// To continue off of the example above, if you want to convert the Animal
+// Crossing: New Horizons Spreadsheet to JSON, we'll do:
+sheets('13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4');
 
-// If you have you 'credentials.json' file stored in another directory,
-// you can tell 'Sheets' by passing in a value for 'dir'. If I had my credentials
-// stored in my Desktop, for example, I would point that to 'Sheets' by doing:
+// If you have saved your 'credentials.json' file in another directory, you
+// can point that directory to sheets by doing:
+sheets('13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4', { dir: '/Users/norviah/Documents/config/' });
 
-Sheets('13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4', { dir: '/Users/norviah/Desktop' });
-
-// By default, 'Sheets' will store JSON files into the 'data' sub-directory
-// under the project's root. If wanted, you can point in another directory by:
-
-Sheets('13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4', { data: '/Users/norviah/Desktop' });
+// By default, converted JSON files will be saved into the sub-directory 'data'
+// under the project's root directory, to change the directory, pass in a value
+// for the 'data' option:
+sheets('13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4', { data: '/Users/norviah/Desktop' });
 
 ```
 

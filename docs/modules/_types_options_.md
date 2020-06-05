@@ -1,12 +1,12 @@
-[@norviah/sheets](../README.md) › [Globals](../globals.md) › ["options"](_options_.md)
+[@norviah/sheets](../README.md) › [Globals](../globals.md) › ["types/options"](_types_options_.md)
 
-# Module: "options"
+# Module: "types/options"
 
 ## Index
 
 ### Type aliases
 
-* [Options](_options_.md#options)
+* [Options](_types_options_.md#options)
 
 ## Type aliases
 
@@ -14,13 +14,13 @@
 
 Ƭ **Options**: *object*
 
-Defined in options.ts:4
-
-Possible options to use when converting.
+Defined in types/options.ts:1
 
 #### Type declaration:
 
 * **data**? : *undefined | string*
+
+* **delay**? : *undefined | number*
 
 * **dir**? : *undefined | string*
 
