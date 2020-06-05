@@ -86,7 +86,9 @@ async function sheets(id: string, { verbose = false, delay = 0, dir = directorie
       await wait(delay);
     }
 
-    // Keep trying to convert the current tab to JSON.
+    // Implementing a back off system for converting spreadsheets into JSON, if
+    // an error occurs, the program pauses for 30 seconds before trying the next
+    // attempt. The program exists once it meets the max amount of attempts.
     await retry(client, id, name, data, spinner);
 
     spinner?.succeed(`finished: ${name}`);
