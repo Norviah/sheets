@@ -1,10 +1,11 @@
+import { backOff } from 'exponential-backoff';
 import { writeFileSync } from 'fs';
 import { sheets_v4 } from 'googleapis';
 import { zipObject } from 'lodash';
 import ora from 'ora';
 import { join } from 'path';
 
-import { wait } from './util/wait';
+import { maxAttempts } from './util/config';
 
 /**
  * Converts the given tab name from the spreadsheet into a JSON file.
@@ -42,21 +43,45 @@ async function convert(client: sheets_v4.Sheets, id: string, name: string, dir: 
 }
 
 /**
- * Essentially a helper function for the 'convert' function, this function calls
- * 'convert' method and, if an error occurs, it most likely means that the
- * project has been rate limited by Google. To combat this, we wait 30 seconds
- * and try to convert the given sheet again.
- * @param  client The authorized Google Spreadheets client.
+ * This function is executed if an error occurs while converting, if the given
+ * attempt number is the maximum allowed attempt, the program is terminated
+ * @param  error   The error that was thrown.
+ * @param  attempt The number of the next attempt.
+ * @param  spinner The ora instance, if one exists.
+ * @return         Determines if the program should continue to attempt.
+ */
+function handler(error: any, attempt: number, spinner: ora.Ora | null): boolean {
+  spinner?.fail('error\n');
+
+  // Quit the program if the current attempt is the maximum allowed attempt as
+  // we don't want this program to bombarde Google's API.
+  if (attempt === maxAttempts) {
+    console.error(`An error occurred ${maxAttempts} time(s)\n${error}\n\nQuitting the program`);
+    process.exit(1);
+  }
+
+  // Inform the user of the aerror and the amount of attempts.
+  console.warn(`An error occurred while converting\n${error}\n\nRetrying attempt #${attempt} in 30 seconds...\n`);
+
+  return true;
+}
+
+/**
+ * Implements a backoff system while trying to convert spreadsheets to JSON.
+ * When trying to convert and an error occurs, we'll try to convert that convert
+ * that tab again, up to maxAttempts, when this amount is met, the program ends.
+ * @param  client  The authorized Google Spreadheets client.
  * @param  id      The ID of the spreadsheet.
  * @param  name    The name of the sheet to convert.
  * @param  dir     The directory that we'll save the JSON file to.
  * @param  spinner The ora instance, if one exists.
  */
 async function retry(client: sheets_v4.Sheets, id: string, name: string, dir: string, spinner: ora.Ora | null): Promise<void> {
-  await convert(client, id, name, dir).catch(async (error) => {
-    spinner?.fail('error\n');
-    console.warn(`An error occurred while converting the tab: ${name}\n${error}\n\nRetrying in 30 seconds...\n`);
-    await wait(30000).then(async () => await retry(client, id, name, dir, spinner));
+  await backOff<void>(() => convert(client, id, name, dir), {
+    retry: (e: any, attempt: number): boolean => handler(e, attempt, spinner),
+    startingDelay: 30000,
+    timeMultiple: 1,
+    numOfAttempts: maxAttempts,
   });
 }
 

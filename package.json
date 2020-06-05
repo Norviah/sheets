@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build:src": "./node_modules/typescript/bin/tsc",
-    "build:docs": "/bin/rm -rf ./docs; ./node_modules/typedoc/bin/typedoc --plugin typedoc-plugin-markdown && sed -i '' '4d;5d' ./docs/README.md",
+    "build:docs": "npm run build:src && /bin/rm -rf ./docs; ./node_modules/typedoc/bin/typedoc --plugin typedoc-plugin-markdown && sed -i '' '4d;5d' ./docs/README.md",
     "publish:patch": "npm run build:src && ./node_modules/standard-version/bin/cli.js --release-as patch && npm run publish",
     "publish:minor": "npm run build:src && ./node_modules/standard-version/bin/cli.js --release-as minor && npm run publish",
     "publish:major": "npm run build:src && ./node_modules/standard-version/bin/cli.js --release-as major && npm run publish",
@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "app-root-path": "^3.0.0",
+    "exponential-backoff": "^3.0.0",
     "google-auth-library": "^6.0.0",
     "googleapis": "^51.0.0",
     "lodash": "^4.17.15",
