@@ -4,24 +4,6 @@
 
 ## Index
 
-### Type aliases
+### Interfaces
 
-* [Response](_types_response_.md#response)
-
-## Type aliases
-
-###  Response
-
-Ƭ **Response**: *object*
-
-*Defined in [types/response.ts:1](https://github.com/Norviah/sheets/blob/20a3574/src/types/response.ts#L1)*
-
-#### Type declaration:
-
-* **converted**: *string[]*
-
-* **data**: *string*
-
-* **dir**: *string*
-
-* **names**: *string[]*
+* [Response](../interfaces/_types_response_.response.md)

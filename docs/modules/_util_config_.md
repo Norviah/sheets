@@ -14,7 +14,7 @@
 
 • **maxAttempts**: *number* = 3
 
-Defined in util/config.ts:6
+*Defined in [util/config.ts:6](https://github.com/Norviah/sheets/blob/7510284/src/util/config.ts#L6)*
 
 Represents the max amount of attempts the program will try when trying to
 convert Google Spreadsheets to JSON. An attempt isn't consistent with each

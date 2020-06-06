@@ -12,6 +12,7 @@
 * ["types/credentials"](modules/_types_credentials_.md)
 * ["types/options"](modules/_types_options_.md)
 * ["types/response"](modules/_types_response_.md)
+* ["types/spreadsheet"](modules/_types_spreadsheet_.md)
 * ["types/tokens"](modules/_types_tokens_.md)
 * ["util/config"](modules/_util_config_.md)
 * ["util/directories"](modules/_util_directories_.md)
