@@ -74,10 +74,8 @@ async function sheets(spreadsheets: Spreadsheet | Spreadsheet[], { verbose = fal
       }
 
       // Here, we implement a backoff system for converting spreadsheets. If an
-      // error occurs while converting, there's a good chance that the user has
-      // been rate limited by Google. To combat this, the program waits 30
-      // seconds before attempting to convert the same tab, if an error occurs
-      // 3 times in a row for the same tab, the program is terminated.
+      // error occurs while converting, the system waits 30 seconds before
+      // retrying. If an error occurs 3 times in a row, an error is thrown.
       await retry(client, information.id, name, data, spinner);
     }
 
