@@ -22,7 +22,7 @@
 
 • **access_token**: *string*
 
-*Defined in [types/tokens.ts:2](https://github.com/Norviah/sheets/blob/7510284/src/types/tokens.ts#L2)*
+*Defined in [types/tokens.ts:2](https://github.com/Norviah/sheets/blob/afa1154/src/types/tokens.ts#L2)*
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 • **expiry_date**: *number*
 
-*Defined in [types/tokens.ts:6](https://github.com/Norviah/sheets/blob/7510284/src/types/tokens.ts#L6)*
+*Defined in [types/tokens.ts:6](https://github.com/Norviah/sheets/blob/afa1154/src/types/tokens.ts#L6)*
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 • **refresh_token**: *string*
 
-*Defined in [types/tokens.ts:3](https://github.com/Norviah/sheets/blob/7510284/src/types/tokens.ts#L3)*
+*Defined in [types/tokens.ts:3](https://github.com/Norviah/sheets/blob/afa1154/src/types/tokens.ts#L3)*
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 • **scope**: *string*
 
-*Defined in [types/tokens.ts:4](https://github.com/Norviah/sheets/blob/7510284/src/types/tokens.ts#L4)*
+*Defined in [types/tokens.ts:4](https://github.com/Norviah/sheets/blob/afa1154/src/types/tokens.ts#L4)*
 
 ___
 
@@ -54,4 +54,4 @@ ___
 
 • **token_type**: *string*
 
-*Defined in [types/tokens.ts:5](https://github.com/Norviah/sheets/blob/7510284/src/types/tokens.ts#L5)*
+*Defined in [types/tokens.ts:5](https://github.com/Norviah/sheets/blob/afa1154/src/types/tokens.ts#L5)*

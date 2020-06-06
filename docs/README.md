@@ -25,22 +25,22 @@ When using `sheets`, to convert a spreadsheet, you need to give an object contai
 The usage for `sheets` looks like:
 
 ```javascript
-sheets({ /** spreadsheet information */ }, { /** options */ })
+sheets({ /** spreadsheet */ }, { /** options */ })
 ```
 
 To convert a spreadsheet using `sheets`, you must provide an object containing:
 - id `string`: The spreadsheet's ID.
 - include `string[]`: Optional, a list of tab names to only convert.
 - exclude `string[]`: Optional, a list of tab names to ignore and not convert.
-- data `string[]`: Optional, `sheets` will save this spreadsheet's JSON file in this specific directory. If this value isn't provided, `sheets` will default to the `data` directory in the `options` object, and if that value isn't provided, `sheets` will default to the sub-directory `data` in the project's root directory.
+- data `string`: Optional, `sheets` will save this spreadsheet's JSON file in this specific directory. If this value isn't provided, `sheets` will default to the `data` directory in the `options` object, and if that value isn't provided, `sheets` will default to the sub-directory `data` in the project's root directory.
 
 To convert multiple spreadsheets, you can provide an array of objects:
 
 ```javascript
-sheets([{ /** spreadsheet information */ }, { /** spreadsheet information */ }], { /** options */ })
+sheets([{ /** spreadsheet */ }, { /** spreadsheet */ }], { /** options */ })
 ```
 
-## Examples
+### Examples
 
 ```javascript
 
@@ -66,7 +66,7 @@ sheets({ id: '13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4' }, { id:  '1BjqVeqIr
 // files for that specific spreadsheet, will be saved in that directory.
 sheets({ id: '13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4', data: '/Users/norviah/Documents' }, { id:  '1BjqVeqIrfEezvyrWLUrwMjmK_UbY2LXkZ12mttamTtk' }, { data: '/User/norviah/Desktop' });
 
-// Note that if a directory does not exist, `sheets` will recursively create it. 
+// Note that if a directory does not exist, sheets will recursively create it.
 
 ```
 

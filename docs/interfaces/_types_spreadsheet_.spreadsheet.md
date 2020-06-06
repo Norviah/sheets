@@ -21,7 +21,7 @@
 
 • **data**? : *undefined | string*
 
-*Defined in [types/spreadsheet.ts:20](https://github.com/Norviah/sheets/blob/7510284/src/types/spreadsheet.ts#L20)*
+*Defined in [types/spreadsheet.ts:20](https://github.com/Norviah/sheets/blob/afa1154/src/types/spreadsheet.ts#L20)*
 
 Represents where the JSON files for this specific spreadsheet will be saved.
 
@@ -31,7 +31,7 @@ ___
 
 • **exclude**? : *string[]*
 
-*Defined in [types/spreadsheet.ts:10](https://github.com/Norviah/sheets/blob/7510284/src/types/spreadsheet.ts#L10)*
+*Defined in [types/spreadsheet.ts:10](https://github.com/Norviah/sheets/blob/afa1154/src/types/spreadsheet.ts#L10)*
 
 A list of sheet names to ignore and not convert.
 
@@ -41,7 +41,7 @@ ___
 
 • **id**: *string*
 
-*Defined in [types/spreadsheet.ts:5](https://github.com/Norviah/sheets/blob/7510284/src/types/spreadsheet.ts#L5)*
+*Defined in [types/spreadsheet.ts:5](https://github.com/Norviah/sheets/blob/afa1154/src/types/spreadsheet.ts#L5)*
 
 The ID of the spreadsheet.
 
@@ -51,6 +51,6 @@ ___
 
 • **include**? : *string[]*
 
-*Defined in [types/spreadsheet.ts:15](https://github.com/Norviah/sheets/blob/7510284/src/types/spreadsheet.ts#L15)*
+*Defined in [types/spreadsheet.ts:15](https://github.com/Norviah/sheets/blob/afa1154/src/types/spreadsheet.ts#L15)*
 
 A list of sheet names to only convert.
