@@ -46,7 +46,7 @@ async function convert(client: sheets_v4.Sheets, id: string, name: string, dir: 
  * This function is executed if an error occurs while converting, if the given
  * attempt number is the maximum allowed attempt, the program is terminated
  * @param  error   The error that was thrown.
- * @param  attempt The number of the next attempt.
+ * @param  attempt The number of the attempt of when the error occurred.
  * @param  spinner The ora instance, if one exists.
  * @return         Determines if the program should continue to attempt.
  */
@@ -61,7 +61,7 @@ function handler(error: any, attempt: number, spinner: ora.Ora | null): boolean 
   }
 
   // Inform the user of the aerror and the amount of attempts.
-  console.warn(`An error occurred while converting\n${error}\n\nRetrying attempt #${attempt} in 30 seconds...\n`);
+  console.warn(`An error occurred while converting\n${error}\n\nRetrying attempt #${attempt + 1} in 30 seconds...\n`);
 
   return true;
 }
