@@ -72,7 +72,7 @@ async function sheets(spreadsheets: Spreadsheet | Spreadsheet[], { verbose = fal
       spinner?.start(`converting: [${spreadsheet.data.properties?.title ?? 'Unknown'}] ${name}`);
 
       if (delay > 0) {
-        wait(delay);
+        await wait(delay);
       }
 
       // Here, we implement a backoff system for converting spreadsheets. If an
