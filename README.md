@@ -30,7 +30,7 @@ To convert a spreadsheet using `sheets`, you must provide an object containing:
 - id `string`: The spreadsheet's ID.
 - include `string[]`: Optional, a list of tab names to only convert.
 - exclude `string[]`: Optional, a list of tab names to ignore and not convert.
-- data `string[]`: Optional, `sheets` will save this spreadsheet's JSON file in this specific directory. If this value isn't provided, `sheets` will default to the `data` directory in the `options` object, and if that value isn't provided, `sheets` will default to the sub-directory `data` in the project's root directory.
+- data `string`: Optional, `sheets` will save this spreadsheet's JSON file in this specific directory. If this value isn't provided, `sheets` will default to the `data` directory in the `options` object, and if that value isn't provided, `sheets` will default to the sub-directory `data` in the project's root directory.
 
 To convert multiple spreadsheets, you can provide an array of objects:
 
