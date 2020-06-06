@@ -1,4 +1,4 @@
-type Options = {
+interface Options {
   /**
    * Determines if the tab name should be printed when converting.
    */
@@ -28,6 +28,6 @@ type Options = {
    * A list of sheet names to only convert.
    */
   include?: string[];
-};
+}
 
 export { Options };

@@ -1,4 +1,4 @@
-type Credentials = {
+interface Credentials {
   installed: {
     client_id: string;
     project_id: string;
@@ -8,6 +8,6 @@ type Credentials = {
     client_secret: string;
     redirect_uris: string[];
   };
-};
+}
 
 export { Credentials };
