@@ -19,7 +19,7 @@
 
 • **scopes**: *string[]* = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
-*Defined in [authorize.ts:15](https://github.com/Norviah/sheets/blob/20a3574/src/authorize.ts#L15)*
+*Defined in [authorize.ts:15](https://github.com/Norviah/sheets/blob/7510284/src/authorize.ts#L15)*
 
 Represents the scopes that this project will use, we just need to read
 information from spreadsheets, so we'll use the 'readonly' scope.
@@ -30,7 +30,7 @@ information from spreadsheets, so we'll use the 'readonly' scope.
 
 ▸ **authorize**(`dir`: string): *Promise‹OAuth2Client›*
 
-*Defined in [authorize.ts:55](https://github.com/Norviah/sheets/blob/20a3574/src/authorize.ts#L55)*
+*Defined in [authorize.ts:55](https://github.com/Norviah/sheets/blob/7510284/src/authorize.ts#L55)*
 
 Initializes a new client with Google's API and returns that reference.
 
@@ -50,7 +50,7 @@ ___
 
 ▸ **generateTokens**(`client`: OAuth2Client, `dir`: string): *Promise‹OAuth2Client›*
 
-*Defined in [authorize.ts:24](https://github.com/Norviah/sheets/blob/20a3574/src/authorize.ts#L24)*
+*Defined in [authorize.ts:24](https://github.com/Norviah/sheets/blob/7510284/src/authorize.ts#L24)*
 
 Generates tokens for the client and saves the tokens to the given directory,
 the client is authorized with the generated tokens and is returned.

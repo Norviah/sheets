@@ -14,7 +14,7 @@
 
 ▸ **sanitize**<**T**>(`value`: T | null | undefined): *value is T*
 
-*Defined in [util/sanitize.ts:5](https://github.com/Norviah/sheets/blob/20a3574/src/util/sanitize.ts#L5)*
+*Defined in [util/sanitize.ts:5](https://github.com/Norviah/sheets/blob/7510284/src/util/sanitize.ts#L5)*
 
 Makes sure that the given parameter is the given type.
 

@@ -14,7 +14,7 @@
 
 ▸ **wait**(`duration`: number): *Promise‹void›*
 
-*Defined in [util/wait.ts:5](https://github.com/Norviah/sheets/blob/20a3574/src/util/wait.ts#L5)*
+*Defined in [util/wait.ts:5](https://github.com/Norviah/sheets/blob/7510284/src/util/wait.ts#L5)*
 
 Pauses the main thread for the given amount of time, in milliseconds.
 

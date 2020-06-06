@@ -12,48 +12,27 @@
 
 ###  sheets
 
-▸ **sheets**(`id`: string, `__namedParameters`: object): *Promise‹[Response](_types_response_.md#response)›*
+▸ **sheets**(`spreadsheets`: [Spreadsheet](../interfaces/_types_spreadsheet_.spreadsheet.md) | [Spreadsheet](../interfaces/_types_spreadsheet_.spreadsheet.md)[], `__namedParameters`: object): *Promise‹[Response](../interfaces/_types_response_.response.md)›*
 
-*Defined in [index.ts:42](https://github.com/Norviah/sheets/blob/20a3574/src/index.ts#L42)*
+*Defined in [index.ts:23](https://github.com/Norviah/sheets/blob/7510284/src/index.ts#L23)*
 
 Convert Google Spreadsheets into JSON.
 
-**`examples`** 
-```typescript
-
-const { Sheets } = require('@norviah/sheets');
-
-// To get the ID of a sheet, grab the long random string in the URL, for
-// example, if we want to generate JSON files for the Animal Crossing New
-// Horizons spreadsheet, the URL being: https://tinyurl.com/acnh-sheet,
-// the ID would be '13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4'.
-
-// So to generate JSON files for that spreadsheet, we'll do:
-sheets('13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4', { [ options ] });
-
-// By default, the JSON files will be saved in the sub-directory 'data' under
-// the project's root. If you want to change this location, you can do so by:
-sheets('13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4', { data: '[path]' });
-
-```
-
 **Parameters:**
 
-▪ **id**: *string*
+▪ **spreadsheets**: *[Spreadsheet](../interfaces/_types_spreadsheet_.spreadsheet.md) | [Spreadsheet](../interfaces/_types_spreadsheet_.spreadsheet.md)[]*
 
-The ID of the spreadsheet to convert.
+A list of spreadsheets to convert.
 
 ▪`Default value`  **__namedParameters**: *object*= {}
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `data` | string | directories.data | Determines where converted JSON files will be stored. |
-`delay` | number | 0 | Represents how long the program should wait between converting tabs, in milliseconds. |
-`dir` | string | directories.config | The directory that holds the credentials and tokens file. |
-`exclude` | string[] | [] | A list of sheet names to ignore and not convert. |
-`include` | string[] | [] | A list of sheet names to only convert. |
-`verbose` | boolean | false | Determines if the tab name should be printed when converting. |
+`delay` | number | 0 | Represents how long the program should wait between tabs. |
+`dir` | string | directories.config | The directory that holds your credentials and tokens. |
+`verbose` | boolean | false | Determines if the tab name should be printed while converting. |
 
-**Returns:** *Promise‹[Response](_types_response_.md#response)›*
+**Returns:** *Promise‹[Response](../interfaces/_types_response_.response.md)›*
 
-An object containing information about converted tabs.
+Represents information about what was converted.
