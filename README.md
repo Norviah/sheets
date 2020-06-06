@@ -23,7 +23,7 @@ When using `sheets`, to convert a spreadsheet, you need to give an object contai
 The usage for `sheets` looks like:
 
 ```javascript
-sheets({ /** spreadsheet information */ }, { /** options */ })
+sheets({ /** spreadsheet */ }, { /** options */ })
 ```
 
 To convert a spreadsheet using `sheets`, you must provide an object containing:
@@ -35,10 +35,10 @@ To convert a spreadsheet using `sheets`, you must provide an object containing:
 To convert multiple spreadsheets, you can provide an array of objects:
 
 ```javascript
-sheets([{ /** spreadsheet information */ }, { /** spreadsheet information */ }], { /** options */ })
+sheets([{ /** spreadsheet */ }, { /** spreadsheet */ }], { /** options */ })
 ```
 
-## Examples
+### Examples
 
 ```javascript
 
@@ -64,7 +64,7 @@ sheets({ id: '13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4' }, { id:  '1BjqVeqIr
 // files for that specific spreadsheet, will be saved in that directory.
 sheets({ id: '13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4', data: '/Users/norviah/Documents' }, { id:  '1BjqVeqIrfEezvyrWLUrwMjmK_UbY2LXkZ12mttamTtk' }, { data: '/User/norviah/Desktop' });
 
-// Note that if a directory does not exist, `sheets` will recursively create it. 
+// Note that if a directory does not exist, sheets will recursively create it.
 
 ```
 

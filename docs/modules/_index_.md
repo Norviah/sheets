@@ -14,7 +14,7 @@
 
 ▸ **sheets**(`spreadsheets`: [Spreadsheet](../interfaces/_types_spreadsheet_.spreadsheet.md) | [Spreadsheet](../interfaces/_types_spreadsheet_.spreadsheet.md)[], `__namedParameters`: object): *Promise‹[Response](../interfaces/_types_response_.response.md)›*
 
-*Defined in [index.ts:23](https://github.com/Norviah/sheets/blob/7510284/src/index.ts#L23)*
+*Defined in [index.ts:23](https://github.com/Norviah/sheets/blob/afa1154/src/index.ts#L23)*
 
 Convert Google Spreadsheets into JSON.
 
