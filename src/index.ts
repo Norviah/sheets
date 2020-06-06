@@ -28,12 +28,6 @@ async function sheets(spreadsheets: Spreadsheet | Spreadsheet[], { verbose = fal
   // Initialize a client with Google's API.
   const client: sheets_v4.Sheets = google.sheets({ version: 'v4', auth: await authorize(dir) });
 
-  // Make sure the 'data' directory exists as this directory represents where
-  // the converted JSON files will be stored.
-  if (!existsSync(data)) {
-    mkdirSync(data, { recursive: true });
-  }
-
   // Make sure that the given parameter is an array.
   spreadsheets = Array.isArray(spreadsheets) ? spreadsheets : [spreadsheets];
 
@@ -44,9 +38,17 @@ async function sheets(spreadsheets: Spreadsheet | Spreadsheet[], { verbose = fal
   const result: Response = {};
 
   for (const information of spreadsheets) {
+    const { id } = information;
+
+    // Make sure the 'data' directory exists as this directory represents where
+    // the converted JSON files will be stored.
+    if (!existsSync(information.data ?? data)) {
+      mkdirSync(information.data ?? data, { recursive: true });
+    }
+
     // From the client, get information of the spreadsheet.
-    const spreadsheet = await client.spreadsheets.get({ spreadsheetId: information.id }).catch((error: any) => {
-      throw new Error(`The sheet ID '${information.id}' couldn't be found\n${error}`);
+    const spreadsheet = await client.spreadsheets.get({ spreadsheetId: id }).catch((error: any) => {
+      throw new Error(`The sheet ID '${id}' couldn't be found\n${error}`);
     });
 
     // Get a list of tabs from the spreadsheet.
@@ -76,16 +78,16 @@ async function sheets(spreadsheets: Spreadsheet | Spreadsheet[], { verbose = fal
       // Here, we implement a backoff system for converting spreadsheets. If an
       // error occurs while converting, the system waits 30 seconds before
       // retrying. If an error occurs 3 times in a row, an error is thrown.
-      await retry(client, information.id, name, data, spinner);
+      await retry(client, id, name, information.data ?? data, spinner);
     }
 
     // Update the spinner's text to reflect the spreadsheet's title.
     spinner?.succeed(`finished: ${spreadsheet.data.properties?.title ?? 'Unknown'}`);
 
-    result[information.id] = { converted: names, names: sanitized, dir, data };
+    result[id] = { converted: names, names: sanitized, dir, data: information.data ?? data };
   }
 
   return result;
 }
 
-export { sheets };
+export { sheets, Options, Spreadsheet, Response };

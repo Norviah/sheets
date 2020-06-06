@@ -13,6 +13,11 @@ interface Spreadsheet {
    * A list of sheet names to only convert.
    */
   include?: string[];
+
+  /**
+   * Represents where the JSON files for this specific spreadsheet will be saved.
+   */
+  data?: string;
 }
 
 export { Spreadsheet };
