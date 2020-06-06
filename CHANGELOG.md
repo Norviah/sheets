@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/norviah/sheets/compare/v2.1.0...v3.0.0) (2020-06-06)
+
+
+### Features
+
+* allowed the possibility to convert a specific spreadsheet to a specific directory ([7510284](https://github.com/norviah/sheets/commit/7510284e49e752b5fb033e0179c4e6b5d27c7760))
+* allowed the possibility to convert multiple spreadsheets ([09677d5](https://github.com/norviah/sheets/commit/09677d521792f386be733660bb3a6a8b062d6284))
+* moved types to interfaces ([1a20d03](https://github.com/norviah/sheets/commit/1a20d03804d88e2cfd290bc748de79dabcc3cf7d))
+
+
+### Bug Fixes
+
+* fixed a comment and line which had wrong information ([3983dbd](https://github.com/norviah/sheets/commit/3983dbda41adea2b52641348d087ec883c672517))
+* throw an error if an error occurs 3 times in a row ([3ed6f23](https://github.com/norviah/sheets/commit/3ed6f23f8c682d498d6a30a28a8207e42b30ddc7))
+
 ## [2.1.0](https://github.com/norviah/sheets/compare/v2.0.0...v2.1.0) (2020-06-05)
 
 
