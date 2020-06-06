@@ -18,16 +18,6 @@ interface Options {
    * Determines where converted JSON files will be stored.
    */
   data?: string;
-
-  /**
-   * A list of sheet names to ignore and not convert.
-   */
-  exclude?: string[];
-
-  /**
-   * A list of sheet names to only convert.
-   */
-  include?: string[];
 }
 
 export { Options };
