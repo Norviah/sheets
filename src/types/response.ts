@@ -1,4 +1,4 @@
-type Response = {
+interface Response {
   /**
    * Represents a list of tabs that were converted.
    */
@@ -18,6 +18,6 @@ type Response = {
    * Represents the directory where the JSON files were stored.
    */
   data: string;
-};
+}
 
 export { Response };
