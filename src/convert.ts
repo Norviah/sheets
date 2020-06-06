@@ -44,7 +44,7 @@ async function convert(client: sheets_v4.Sheets, id: string, name: string, dir: 
 
 /**
  * This function is executed if an error occurs while converting, if the given
- * attempt number is the maximum allowed attempt, the program is terminated
+ * attempt number is the maximum allowed attempt, an error is thrown.
  * @param  error   The error that was thrown.
  * @param  attempt The number of the attempt of when the error occurred.
  * @param  spinner The ora instance, if one exists.
@@ -56,8 +56,7 @@ function handler(error: any, attempt: number, spinner: ora.Ora | null): boolean 
   // Quit the program if the current attempt is the maximum allowed attempt as
   // we don't want this program to bombarde Google's API.
   if (attempt === maxAttempts) {
-    console.error(`An error occurred ${maxAttempts} time(s)\n${error}\n\nQuitting the program`);
-    process.exit(1);
+    throw new Error(`An error occurred ${maxAttempts} time(s)\n${error}`);
   }
 
   // Inform the user of the aerror and the amount of attempts.
