@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/norviah/sheets/compare/v3.0.0...v3.0.1) (2020-06-06)
+
+
+### Bug Fixes
+
+* added 'await' for the delay ([0543536](https://github.com/norviah/sheets/commit/0543536f4724f70d48cfa52e00de477197e13c7f))
+
 ## [3.0.0](https://github.com/norviah/sheets/compare/v2.1.0...v3.0.0) (2020-06-06)
 
 
