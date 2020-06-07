@@ -18,8 +18,6 @@ To convert a Google Spreadsheet into JSON, you'll need the spreadsheet's ID, whi
 
 If `sheets` encounters an error while converting, which is probably Google rate limiting `sheets`, `sheets` will attempt to convert that tab again, up to three times. If an error still occurs for the third attempt, an error is thrown.
 
-When using `sheets`, to convert a spreadsheet, you need to give an object containing the spreadsheet's ID, and optionally providing an array representing the tabs you want `sheets` to either ignore and/or exclude.
-
 The usage for `sheets` looks like:
 
 ```javascript
