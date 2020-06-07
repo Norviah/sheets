@@ -14,7 +14,7 @@
 
 ▸ **json**<**T**>(`path`: string): *T | null*
 
-*Defined in [util/json.ts:8](https://github.com/Norviah/sheets/blob/afa1154/src/util/json.ts#L8)*
+*Defined in [util/json.ts:8](https://github.com/Norviah/sheets/blob/69bd333/src/util/json.ts#L8)*
 
 Returns the JSON path as the given type if the path exists, otherwise, null.
 
