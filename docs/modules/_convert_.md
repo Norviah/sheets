@@ -16,7 +16,7 @@
 
 ▸ **convert**(`client`: Sheets, `id`: string, `name`: string, `dir`: string): *Promise‹void›*
 
-*Defined in [convert.ts:17](https://github.com/Norviah/sheets/blob/afa1154/src/convert.ts#L17)*
+*Defined in [convert.ts:17](https://github.com/Norviah/sheets/blob/69bd333/src/convert.ts#L17)*
 
 Converts the given tab name from the spreadsheet into a JSON file.
 
@@ -37,7 +37,7 @@ ___
 
 ▸ **handler**(`error`: any, `attempt`: number, `spinner`: Ora | null): *boolean*
 
-*Defined in [convert.ts:53](https://github.com/Norviah/sheets/blob/afa1154/src/convert.ts#L53)*
+*Defined in [convert.ts:53](https://github.com/Norviah/sheets/blob/69bd333/src/convert.ts#L53)*
 
 This function is executed if an error occurs while converting, if the given
 attempt number is the maximum allowed attempt, an error is thrown.
@@ -60,7 +60,7 @@ ___
 
 ▸ **retry**(`client`: Sheets, `id`: string, `name`: string, `dir`: string, `spinner`: Ora | null): *Promise‹void›*
 
-*Defined in [convert.ts:78](https://github.com/Norviah/sheets/blob/afa1154/src/convert.ts#L78)*
+*Defined in [convert.ts:78](https://github.com/Norviah/sheets/blob/69bd333/src/convert.ts#L78)*
 
 Implements a backoff system while trying to convert spreadsheets to JSON.
 When trying to convert and an error occurs, we'll try to convert that convert

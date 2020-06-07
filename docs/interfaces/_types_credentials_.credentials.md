@@ -18,7 +18,7 @@
 
 • **installed**: *object*
 
-*Defined in [types/credentials.ts:2](https://github.com/Norviah/sheets/blob/afa1154/src/types/credentials.ts#L2)*
+*Defined in [types/credentials.ts:2](https://github.com/Norviah/sheets/blob/69bd333/src/types/credentials.ts#L2)*
 
 #### Type declaration:
 
