@@ -14,7 +14,7 @@ npm install @norviah/sheets
 
 Your `credentials.json` file should be saved in the sub-directory `config` under your project's root directory, if wanted, you can save this file in another directory and point that directory to `sheets` during execution.
 
-To convert a Google Spreadsheet into JSON, you'll need the spreadsheet's ID, which is the long random string in the URL. For example, to convert the [Animal Crossing: New Horizons Spreadsheet], the ID is `13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4`.
+To use this module, you'll need the ID of a spreadsheet, which is the long random string in the URL. For example, if you want to convert the [Animal Crossing: New Horizons Spreadsheet](https://tinyurl.com/acnh-sheet), you'll need the ID, which is `13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4`.
 
 If `sheets` encounters an error while converting, which is probably Google rate limiting `sheets`, `sheets` will attempt to convert that tab again, up to three times. If an error still occurs for the third attempt, an error is thrown.
 
