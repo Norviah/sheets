@@ -6,6 +6,7 @@ import ora from 'ora';
 import { join } from 'path';
 
 import { maxAttempts } from './util/config';
+import { ensure } from './util/ensure';
 
 /**
  * Converts the given tab name from the spreadsheet into a JSON file.
@@ -34,8 +35,12 @@ async function convert(client: sheets_v4.Sheets, id: string, name: string, dir: 
   // to initialize a new object consisting of these values. zipObject takes two
   // arrays and initializes a new object with the first array representing the
   // keys and the second array representing the values.
+
+  // Before pushing the initialized object, we ensure that no values are
+  // undefined, as if a key is undefined and then saved as a JSON file, that
+  // key simply won't exist on the object.
   for (const row of rows) {
-    data.push({ SourceSheet: name, ...zipObject(header, row) });
+    data.push(ensure({ SourceSheet: name, ...zipObject(header, row) }));
   }
 
   // Once we have converted this spreadsheet, we'll save it to the directory.
