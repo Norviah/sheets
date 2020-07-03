@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/norviah/sheets/compare/v3.0.1...v3.1.0) (2020-07-03)
+
+
+### Features
+
+* ensure that no keys are undefined before saving as JSON ([081f8e9](https://github.com/norviah/sheets/commit/081f8e984dc510d2d298628d05648d67b507ba7b))
+
 ### [3.0.1](https://github.com/norviah/sheets/compare/v3.0.0...v3.0.1) (2020-06-06)
 
 
