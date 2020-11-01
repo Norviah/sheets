@@ -22,7 +22,7 @@ import { wait } from './util/wait';
  */
 async function sheets(spreadsheets: Spreadsheet | Spreadsheet[], { verbose = false, delay = 0, config = directories.config, dir = directories.data }: Options = {}): Promise<Response> {
   if (!existsSync(dir)) {
-    throw new Error(`The directory '${dir}' does not exist.`);
+    mkdirSync(dir, { recursive: true });
   }
 
   // Initialize a client with Google's API.
