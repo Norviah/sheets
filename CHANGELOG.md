@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/norviah/sheets/compare/v3.1.0...v4.0.0) (2020-11-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename options to a name that is clearer
+
+### Features
+
+* rename options to a name that is clearer ([91523ef](https://github.com/norviah/sheets/commit/91523ef36ca74e03ac94f4e423fa4efeb822a7f4))
+
 ## [3.1.0](https://github.com/norviah/sheets/compare/v3.0.1...v3.1.0) (2020-07-03)
 
 
