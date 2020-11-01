@@ -16,7 +16,7 @@ Your `credentials.json` file should be saved in the sub-directory `config` under
 
 To use this module, you'll need the ID of a spreadsheet, which is the long random string in the URL. For example, if you want to convert the [Animal Crossing: New Horizons Spreadsheet](https://tinyurl.com/acnh-sheet), you'll need the ID, which is `13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4`.
 
-If `sheets` encounters an error while converting, which is probably Google rate limiting `sheets`, `sheets` will attempt to convert that tab again, up to three times. If an error still occurs for the third attempt, an error is thrown.
+If `sheets` encounters an error while converting, which is most likely Google rate limiting the program, `sheets` will attempt to convert that tab again, up to three times. If an error still occurs for the third attempt, an error is thrown.
 
 The usage for `sheets` looks like:
 
@@ -28,7 +28,7 @@ To convert a spreadsheet using `sheets`, you must provide an object containing:
 - id `string`: The spreadsheet's ID.
 - include `string[]`: Optional, a list of tab names to only convert.
 - exclude `string[]`: Optional, a list of tab names to ignore and not convert.
-- data `string`: Optional, `sheets` will save this spreadsheet's JSON file in this specific directory. If this value isn't provided, `sheets` will default to the `data` directory in the `options` object, and if that value isn't provided, `sheets` will default to the sub-directory `data` in the project's root directory.
+- dir `string`: Optional, `sheets` will save this spreadsheet's JSON file in this specific directory. If this value isn't provided, `sheets` will default to the `dir` directory in the `options` object, and if that value isn't provided, `sheets` will default to the sub-directory `data` in the project's root directory.
 
 To convert multiple spreadsheets, you can provide an array of objects:
 
@@ -55,14 +55,14 @@ sheets({ id: '13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4' });
 sheets({ id: '13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4' }, { id:  '1BjqVeqIrfEezvyrWLUrwMjmK_UbY2LXkZ12mttamTtk' });
 
 // To change the directory that converted JSON files will be stored, pass in
-// a value for 'data' in the 'options' object:
-sheets({ id: '13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4' }, { id:  '1BjqVeqIrfEezvyrWLUrwMjmK_UbY2LXkZ12mttamTtk' }, { data: '/User/norviah/Desktop' });
+// a value for 'dir' in the 'options' object:
+sheets({ id: '13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4' }, { id:  '1BjqVeqIrfEezvyrWLUrwMjmK_UbY2LXkZ12mttamTtk' }, { dir: '/User/norviah/Desktop' });
 
-// If wanted, you can provide a 'data' value in each spreadsheet, and the JSON
+// If wanted, you can provide a 'dir' value in each spreadsheet, and the JSON
 // files for that specific spreadsheet, will be saved in that directory.
-sheets({ id: '13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4', data: '/Users/norviah/Documents' }, { id:  '1BjqVeqIrfEezvyrWLUrwMjmK_UbY2LXkZ12mttamTtk' }, { data: '/User/norviah/Desktop' });
+sheets({ id: '13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4', dir: '/Users/norviah/Documents' }, { id:  '1BjqVeqIrfEezvyrWLUrwMjmK_UbY2LXkZ12mttamTtk' }, { dir: '/User/norviah/Desktop' });
 
-// Note that if a directory does not exist, sheets will recursively create it.
+// Note that if a directory does not exist, it will be created recursively.
 
 ```
 
