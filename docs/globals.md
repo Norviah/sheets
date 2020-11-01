@@ -16,6 +16,7 @@
 * ["types/tokens"](modules/_types_tokens_.md)
 * ["util/config"](modules/_util_config_.md)
 * ["util/directories"](modules/_util_directories_.md)
+* ["util/ensure"](modules/_util_ensure_.md)
 * ["util/json"](modules/_util_json_.md)
 * ["util/sanitize"](modules/_util_sanitize_.md)
 * ["util/wait"](modules/_util_wait_.md)

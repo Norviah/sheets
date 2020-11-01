@@ -14,7 +14,7 @@
 
 ▸ **sheets**(`spreadsheets`: [Spreadsheet](../interfaces/_types_spreadsheet_.spreadsheet.md) | [Spreadsheet](../interfaces/_types_spreadsheet_.spreadsheet.md)[], `__namedParameters`: object): *Promise‹[Response](../interfaces/_types_response_.response.md)›*
 
-*Defined in [index.ts:23](https://github.com/Norviah/sheets/blob/69bd333/src/index.ts#L23)*
+*Defined in [index.ts:23](https://github.com/Norviah/sheets/blob/8905212/src/index.ts#L23)*
 
 Convert Google Spreadsheets into JSON.
 
@@ -28,9 +28,9 @@ A list of spreadsheets to convert.
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
-`data` | string | directories.data | Determines where converted JSON files will be stored. |
+`config` | string | directories.config | The directory that holds your credentials and tokens. |
 `delay` | number | 0 | Represents how long the program should wait between tabs. |
-`dir` | string | directories.config | The directory that holds your credentials and tokens. |
+`dir` | string | directories.data | Determines where converted JSON files will be stored. |
 `verbose` | boolean | false | Determines if the tab name should be printed while converting. |
 
 **Returns:** *Promise‹[Response](../interfaces/_types_response_.response.md)›*
