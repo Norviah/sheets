@@ -12,12 +12,12 @@ interface Options {
   /**
    * The directory that holds the credentials and tokens file.
    */
-  dir?: string;
+  config?: string;
 
   /**
    * Determines where converted JSON files will be stored.
    */
-  data?: string;
+  dir?: string;
 }
 
 export { Options };

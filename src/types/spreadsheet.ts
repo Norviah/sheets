@@ -17,7 +17,7 @@ interface Spreadsheet {
   /**
    * Represents where the JSON files for this specific spreadsheet will be saved.
    */
-  data?: string;
+  dir?: string;
 }
 
 export { Spreadsheet };

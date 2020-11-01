@@ -16,17 +16,17 @@ import { wait } from './util/wait';
  * @param  spreadsheets A list of spreadsheets to convert.
  * @param  verbose      Determines if the tab name should be printed while converting.
  * @param  delay        Represents how long the program should wait between tabs.
- * @param  dir          The directory that holds your credentials and tokens.
- * @param  data         Determines where converted JSON files will be stored.
+ * @param  config       The directory that holds your credentials and tokens.
+ * @param  dir          Determines where converted JSON files will be stored.
  * @return              Represents information about what was converted.
  */
-async function sheets(spreadsheets: Spreadsheet | Spreadsheet[], { verbose = false, delay = 0, dir = directories.config, data = directories.data }: Options = {}): Promise<Response> {
+async function sheets(spreadsheets: Spreadsheet | Spreadsheet[], { verbose = false, delay = 0, config = directories.config, dir = directories.data }: Options = {}): Promise<Response> {
   if (!existsSync(dir)) {
     throw new Error(`The directory '${dir}' does not exist.`);
   }
 
   // Initialize a client with Google's API.
-  const client: sheets_v4.Sheets = google.sheets({ version: 'v4', auth: await authorize(dir) });
+  const client: sheets_v4.Sheets = google.sheets({ version: 'v4', auth: await authorize(config) });
 
   // Make sure that the given parameter is an array.
   spreadsheets = Array.isArray(spreadsheets) ? spreadsheets : [spreadsheets];
@@ -38,17 +38,15 @@ async function sheets(spreadsheets: Spreadsheet | Spreadsheet[], { verbose = fal
   const result: Response = {};
 
   for (const information of spreadsheets) {
-    const { id } = information;
-
-    // Make sure the 'data' directory exists as this directory represents where
+    // Make sure the 'dir' directory exists as this directory represents where
     // the converted JSON files will be stored.
-    if (!existsSync(information.data ?? data)) {
-      mkdirSync(information.data ?? data, { recursive: true });
+    if (!existsSync(information.dir ?? dir)) {
+      mkdirSync(information.dir ?? dir, { recursive: true });
     }
 
     // From the client, get information of the spreadsheet.
-    const spreadsheet = await client.spreadsheets.get({ spreadsheetId: id }).catch((error: any) => {
-      throw new Error(`The sheet ID '${id}' couldn't be found\n${error}`);
+    const spreadsheet = await client.spreadsheets.get({ spreadsheetId: information.id }).catch((error: any) => {
+      throw new Error(`The sheet ID '${information.id}' couldn't be found\n${error}`);
     });
 
     // Get a list of tabs from the spreadsheet.
@@ -78,13 +76,13 @@ async function sheets(spreadsheets: Spreadsheet | Spreadsheet[], { verbose = fal
       // Here, we implement a backoff system for converting spreadsheets. If an
       // error occurs while converting, the system waits 30 seconds before
       // retrying. If an error occurs 3 times in a row, an error is thrown.
-      await retry(client, id, name, information.data ?? data, spinner);
+      await retry(client, information.id, name, information.dir ?? dir, spinner);
     }
 
     // Update the spinner's text to reflect the spreadsheet's title.
     spinner?.succeed(`finished: ${spreadsheet.data.properties?.title ?? 'Unknown'}`);
 
-    result[id] = { converted: names, names: sanitized, dir, data: information.data ?? data };
+    result[information.id] = { converted: names, names: sanitized, dir, data: information.dir ?? dir };
   }
 
   return result;
