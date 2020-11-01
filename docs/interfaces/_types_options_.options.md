@@ -10,20 +10,20 @@
 
 ### Properties
 
-* [data](_types_options_.options.md#optional-data)
+* [config](_types_options_.options.md#optional-config)
 * [delay](_types_options_.options.md#optional-delay)
 * [dir](_types_options_.options.md#optional-dir)
 * [verbose](_types_options_.options.md#optional-verbose)
 
 ## Properties
 
-### `Optional` data
+### `Optional` config
 
-• **data**? : *undefined | string*
+• **config**? : *undefined | string*
 
-*Defined in [types/options.ts:20](https://github.com/Norviah/sheets/blob/69bd333/src/types/options.ts#L20)*
+*Defined in [types/options.ts:15](https://github.com/Norviah/sheets/blob/8905212/src/types/options.ts#L15)*
 
-Determines where converted JSON files will be stored.
+The directory that holds the credentials and tokens file.
 
 ___
 
@@ -31,7 +31,7 @@ ___
 
 • **delay**? : *undefined | number*
 
-*Defined in [types/options.ts:10](https://github.com/Norviah/sheets/blob/69bd333/src/types/options.ts#L10)*
+*Defined in [types/options.ts:10](https://github.com/Norviah/sheets/blob/8905212/src/types/options.ts#L10)*
 
 Represents how long the program should wait between converting tabs, in milliseconds.
 
@@ -41,9 +41,9 @@ ___
 
 • **dir**? : *undefined | string*
 
-*Defined in [types/options.ts:15](https://github.com/Norviah/sheets/blob/69bd333/src/types/options.ts#L15)*
+*Defined in [types/options.ts:20](https://github.com/Norviah/sheets/blob/8905212/src/types/options.ts#L20)*
 
-The directory that holds the credentials and tokens file.
+Determines where converted JSON files will be stored.
 
 ___
 
@@ -51,6 +51,6 @@ ___
 
 • **verbose**? : *undefined | false | true*
 
-*Defined in [types/options.ts:5](https://github.com/Norviah/sheets/blob/69bd333/src/types/options.ts#L5)*
+*Defined in [types/options.ts:5](https://github.com/Norviah/sheets/blob/8905212/src/types/options.ts#L5)*
 
 Determines if the tab name should be printed when converting.
