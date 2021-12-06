@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0](https://github.com/norviah/sheets/compare/v4.1.0...v4.2.0) (2021-12-06)
+
+
+### Features
+
+* implement a safe way to save tabs that includes path separators ([fec8698](https://github.com/norviah/sheets/commit/fec8698f752244aa6646cbd22c705c95f049c820))
+
 ## [4.1.0](https://github.com/norviah/sheets/compare/v4.0.0...v4.1.0) (2020-11-01)
 
 
