@@ -18,6 +18,12 @@ interface Options {
    * Determines where converted JSON files will be stored.
    */
   dir?: string;
+
+  /**
+   * If a tab is found to contain a path separator, all instances will be
+   * replaced with this string, or `-` by default.
+   */
+  separator?: string;
 }
 
 export { Options };
