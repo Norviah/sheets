@@ -1,6 +1,6 @@
-[@norviah/sheets](README.md) › [Globals](globals.md)
+@norviah/sheets / [Exports](modules.md)
 
-# @norviah/sheets
+## @norviah/sheets
 
 Convert Google Spreadsheets into JSON. In order to use this package, you **must** enable the Google Sheets API for your Google account, which can be done [here](https://developers.google.com/sheets/api/quickstart/nodejs#step_1_turn_on_the).
 
