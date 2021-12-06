@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build:src": "./node_modules/typescript/bin/tsc",
-    "build:docs": "npm run build:src && /bin/rm -rf ./docs; ./node_modules/typedoc/bin/typedoc --plugin typedoc-plugin-markdown && sed -i '' '4d;5d' ./docs/README.md",
+    "build:docs": "npm run build:src && /bin/rm -rf ./docs; ./node_modules/typedoc/bin/typedoc --plugin typedoc-plugin-markdown --githubPages false src/index.ts",
     "publish:patch": "npm run build:src && npm run build:docs && ./node_modules/standard-version/bin/cli.js --release-as patch && npm run publish",
     "publish:minor": "npm run build:src && npm run build:docs && ./node_modules/standard-version/bin/cli.js --release-as minor && npm run publish",
     "publish:major": "npm run build:src && npm run build:docs && ./node_modules/standard-version/bin/cli.js --release-as major && npm run publish",
@@ -43,9 +43,9 @@
     "eslint-plugin-prettier": "^3.1.3",
     "prettier": "^2.0.5",
     "standard-version": "^8.0.0",
-    "typedoc": "^0.17.7",
-    "typedoc-plugin-markdown": "^2.2.17",
-    "typescript": "^3.9.3"
+    "typedoc": "^0.22.7",
+    "typedoc-plugin-markdown": "^3.11.3",
+    "typescript": "^4.5.0"
   },
   "dependencies": {
     "app-root-path": "^3.0.0",
