@@ -37,4 +37,4 @@ Represents information about what was converted.
 
 #### Defined in
 
-[index.ts:23](https://github.com/Norviah/sheets/blob/63eddfd/src/index.ts#L23)
+[index.ts:23](https://github.com/Norviah/sheets/blob/8d1b013/src/index.ts#L23)

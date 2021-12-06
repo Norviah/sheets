@@ -22,7 +22,7 @@ The directory that holds the credentials and tokens file.
 
 #### Defined in
 
-[types/options.ts:15](https://github.com/Norviah/sheets/blob/63eddfd/src/types/options.ts#L15)
+[types/options.ts:15](https://github.com/Norviah/sheets/blob/8d1b013/src/types/options.ts#L15)
 
 ___
 
@@ -34,7 +34,7 @@ Represents how long the program should wait between converting tabs, in millisec
 
 #### Defined in
 
-[types/options.ts:10](https://github.com/Norviah/sheets/blob/63eddfd/src/types/options.ts#L10)
+[types/options.ts:10](https://github.com/Norviah/sheets/blob/8d1b013/src/types/options.ts#L10)
 
 ___
 
@@ -46,7 +46,7 @@ Determines where converted JSON files will be stored.
 
 #### Defined in
 
-[types/options.ts:20](https://github.com/Norviah/sheets/blob/63eddfd/src/types/options.ts#L20)
+[types/options.ts:20](https://github.com/Norviah/sheets/blob/8d1b013/src/types/options.ts#L20)
 
 ___
 
@@ -59,7 +59,7 @@ replaced with this string, or `-` by default.
 
 #### Defined in
 
-[types/options.ts:26](https://github.com/Norviah/sheets/blob/63eddfd/src/types/options.ts#L26)
+[types/options.ts:26](https://github.com/Norviah/sheets/blob/8d1b013/src/types/options.ts#L26)
 
 ___
 
@@ -71,4 +71,4 @@ Determines if the tab name should be printed when converting.
 
 #### Defined in
 
-[types/options.ts:5](https://github.com/Norviah/sheets/blob/63eddfd/src/types/options.ts#L5)
+[types/options.ts:5](https://github.com/Norviah/sheets/blob/8d1b013/src/types/options.ts#L5)
