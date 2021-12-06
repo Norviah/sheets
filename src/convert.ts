@@ -3,19 +3,20 @@ import { writeFileSync } from 'fs';
 import { sheets_v4 } from 'googleapis';
 import { zipObject } from 'lodash';
 import ora from 'ora';
-import { join } from 'path';
+import { join, sep } from 'path';
 
 import { maxAttempts } from './util/config';
 import { ensure } from './util/ensure';
 
 /**
  * Converts the given tab name from the spreadsheet into a JSON file.
- * @param  client The authorized Google Spreadheets client.
- * @param  id     The ID of the spreadsheet.
- * @param  name   The name of the sheet to convert.
- * @param  dir    The directory that we'll save the JSON file to.
+ * @param  client    The authorized Google Spreadheets client.
+ * @param  id        The ID of the spreadsheet.
+ * @param  name      The name of the sheet to convert.
+ * @param  dir       The directory that we'll save the JSON file to.
+ * @param  separator The string to replace path separators, if they exist within `name`.
  */
-async function convert(client: sheets_v4.Sheets, id: string, name: string, dir: string): Promise<void> {
+async function convert(client: sheets_v4.Sheets, id: string, name: string, dir: string, separator: string): Promise<void> {
   // Initialize an array to hold references to all converted data.
   const data: any[] = [];
 
@@ -42,6 +43,11 @@ async function convert(client: sheets_v4.Sheets, id: string, name: string, dir: 
   for (const row of rows) {
     data.push(ensure({ SourceSheet: name, ...zipObject(header, row) }));
   }
+
+  // If the tab name includes the os' separator, an error will be thrown as it
+  // will try to save the file under a directory, instead, we'll replace all
+  // separators with a string if they exist.
+  name = name.includes(sep) ? name.split(sep).join(separator) : name;
 
   // Once we have converted this spreadsheet, we'll save it to the directory.
   writeFileSync(join(dir, `${name}.json`), JSON.stringify(data, null, 2));
@@ -73,15 +79,16 @@ function handler(error: any, attempt: number, spinner: ora.Ora | null): boolean 
 /**
  * Implements a backoff system while trying to convert spreadsheets to JSON.
  * When trying to convert and an error occurs, we'll try to convert that convert
- * that tab again, up to maxAttempts, when this amount is met, the program ends.
- * @param  client  The authorized Google Spreadheets client.
- * @param  id      The ID of the spreadsheet.
- * @param  name    The name of the sheet to convert.
- * @param  dir     The directory that we'll save the JSON file to.
- * @param  spinner The ora instance, if one exists.
+ * that tab again,   up to maxAttempts, when this amount is met, the program ends.
+ * @param  client    The authorized Google Spreadheets client.
+ * @param  id        The ID of the spreadsheet.
+ * @param  name      The name of the sheet to convert.
+ * @param  dir       The directory that we'll save the JSON file to.
+ * @param  spinner   The ora instance, if one exists.
+ * @param  separator The string to replace path separators, if they exist within `name`.
  */
-async function retry(client: sheets_v4.Sheets, id: string, name: string, dir: string, spinner: ora.Ora | null): Promise<void> {
-  await backOff<void>(() => convert(client, id, name, dir), {
+async function retry(client: sheets_v4.Sheets, id: string, name: string, dir: string, spinner: ora.Ora | null, separator: string = '-'): Promise<void> {
+  await backOff<void>(() => convert(client, id, name, dir, separator), {
     retry: (e: any, attempt: number): boolean => handler(e, attempt, spinner),
     startingDelay: 30000,
     timeMultiple: 1,

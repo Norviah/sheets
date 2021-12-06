@@ -20,7 +20,10 @@ import { wait } from './util/wait';
  * @param  dir          Determines where converted JSON files will be stored.
  * @return              Represents information about what was converted.
  */
-async function sheets(spreadsheets: Spreadsheet | Spreadsheet[], { verbose = false, delay = 0, config = directories.config, dir = directories.data }: Options = {}): Promise<Response> {
+async function sheets(
+  spreadsheets: Spreadsheet | Spreadsheet[],
+  { verbose = false, delay = 0, config = directories.config, dir = directories.data, separator = '-' }: Options = {}
+): Promise<Response> {
   if (!existsSync(dir)) {
     mkdirSync(dir, { recursive: true });
   }
@@ -76,7 +79,7 @@ async function sheets(spreadsheets: Spreadsheet | Spreadsheet[], { verbose = fal
       // Here, we implement a backoff system for converting spreadsheets. If an
       // error occurs while converting, the system waits 30 seconds before
       // retrying. If an error occurs 3 times in a row, an error is thrown.
-      await retry(client, information.id, name, information.dir ?? dir, spinner);
+      await retry(client, information.id, name, information.dir ?? dir, spinner, separator);
     }
 
     // Update the spinner's text to reflect the spreadsheet's title.
